@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Storm Surge Lab · Coastal Louisiana</title>
+<meta name="description" content="An interactive classroom exhibit about hurricane storm surge in coastal Louisiana.">
+<link rel="stylesheet" href="style.css">
+<script defer src="model.js"></script><script defer src="scene.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<header class="top"><div class="brand"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M5 24c7-14 17-16 30-11-6-1-12 2-14 7s-8 8-16 4Zm1 6c11 1 14-1 17-5 4-4 8-5 12-3-6 1-8 4-11 7-4 4-12 5-18 1Z" fill="currentColor"/></svg><span>COASTAL LOUISIANA <b>SCIENCE LAB</b></span></div>
+<div class="utility"><button id="guide" class="plain">Educator guide</button><button id="fullscreen" class="plain"><span aria-hidden="true">⛶</span> Fullscreen</button></div></header>
+<main>
+<section class="hero">
+<div><p class="overline">HURRICANES &nbsp;/&nbsp; COASTAL FLOODING</p><h1>Storm Surge Lab<span>.</span></h1><p>See how a hurricane pushes Gulf water into a Louisiana community.</p></div>
+<nav class="modes" aria-label="Exhibit mode"><button id="solo" aria-pressed="true">Simulator</button><button id="showdown" aria-pressed="false">⚡ Hurricane Showdown</button></nav>
+</section>
+<section id="experiment" hidden aria-label="Showdown experiments">
+<div class="experiment-top"><label for="preset">Showdown experiment</label><select id="preset"></select><button id="surprise">Surprise me!</button></div>
+<div class="predict"><strong>Which hurricane will flood more?</strong><span id="prediction-location"></span><div id="answers" role="group" aria-label="Your prediction"><button data-guess="A">Storm A</button><button data-guess="B">Storm B</button><button data-guess="tie">About the same</button></div><output id="result" aria-live="polite"></output></div>
+</section>
+<div id="workspace" class="workspace">
+<section class="exhibit" aria-label="Interactive coast">
+<div class="toolbar"><div class="switch" role="group" aria-label="Scene view"><button id="kid" aria-pressed="true">Kid view</button><button id="science" aria-pressed="false">Science view</button></div>
+<div class="checks"><label><input id="labels" type="checkbox" checked> Labels</label><label><input id="numbers" type="checkbox" checked> Measurements</label></div></div>
+<p id="science-note" hidden>Onshore winds transfer momentum to the water. In this model, pressure makes a smaller contribution. Dashed gold marks the predicted tide and cyan marks storm tide. Breaking waves add a small setup above it. Short crests and a thin wash up the shore show wave motion and runup.</p>
+<div class="scenes" id="scenes"></div>
+<div id="timeline" class="timeline"></div>
+<div id="readings" class="readings-grid" aria-label="Live water measurements"></div>
+</section>
+<aside class="sidebar">
+<details open id="lab"><summary>Storm Lab <span aria-hidden="true"></span></summary>
+<div id="lab-body">
+<div id="comparison-controls" hidden><div class="switch" role="group" aria-label="Storm to edit"><button id="edit-a" aria-pressed="true">Storm A</button><button id="edit-b" aria-pressed="false">Storm B</button></div>
+<label class="check-row"><input type="checkbox" id="lock"> Lock environment</label>
+<label class="check-row"><input type="checkbox" id="independent"> Independent timelines</label></div>
+<div id="fields"></div></div></details>
+<details id="challenge"><summary>Classroom challenges <span aria-hidden="true"></span></summary>
+<div class="detail-body"><label for="question">Choose a challenge</label><select id="question"></select><p id="challenge-prompt"></p><div id="challenge-answers" class="challenge-answers"></div><p id="challenge-feedback" aria-live="polite"></p></div></details>
+<details id="fact"><summary>Did you know? <span aria-hidden="true"></span></summary><p class="detail-body" id="fact-text"></p></details>
+</aside>
+</div>
+<footer><span>Illustrative Louisiana coast · Educational model</span><span>Elevations in feet above model zero</span></footer>
+</main>
+<dialog id="guide-dialog"><form method="dialog"><button class="close" aria-label="Close educator guide">×</button></form><h2>Educator guide</h2>
+<p>Ask students to predict what will happen before changing a control. Start with <b>Category Isn’t Everything</b> in Hurricane Showdown, then ask students to move the depth probe from the yard to Shell Ridge.</p>
+<dl><dt>Storm surge</dt><dd>The storm-driven rise above the predicted astronomical tide.</dd><dt>Storm tide</dt><dd>Predicted astronomical tide plus storm surge. In the lab, the small contribution from breaking-wave setup is displayed separately.</dd><dt>Flood depth</dt><dd>Water above the ground at the probe. At a house, the floor is a separate threshold. All heights use an invented zero near everyday sea level.</dd><dt>Waves</dt><dd>Breaking waves can raise the average water level a little (setup). Individual waves can rush farther uphill (runup). The short moving crests and foam are illustrative. The depth probe measures average water.</dd><dt>Rain and levees</dt><dd>Rainwater can pool behind a levee. Overtopping starts when coastal water rises above the crest. The levee remains intact in this simulation.</dd></dl>
+<p>The terrain, levee and water levels are invented teaching examples. Use official NHC and local NWS products for real storms.</p><p><a href="https://www.nhc.noaa.gov/surge/" target="_blank" rel="noopener">NHC storm surge resources</a> · <a href="https://www.nhc.noaa.gov/surge/inundation/" target="_blank" rel="noopener">Potential Storm Surge Flooding Map</a> · <a href="MODEL.md" target="_blank">Model details</a></p></dialog>
+</body></html>
